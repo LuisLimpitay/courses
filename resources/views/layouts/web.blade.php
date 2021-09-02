@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +11,8 @@
         <div class="bg-blue-900 py-1"></div>
         <nav class="bg-blue-800 py-2">
             <a href="#">
-                <img src="{{ asset('images/isotipo-platzi.png') }}" class="mx-auto h-8">
-            </a>
+                <img src="{{ asset('images/logoPlatzi.png') }}" class="mx-auto h-8">
+            </a>    
         </nav>
     </header> 
 
@@ -25,7 +24,7 @@
 
     <footer class="py-4 text-center">
         @auth
-            <a href="{{ url('dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+            <a href="{{ url('dashboard') }}" class="text-sm text-gray-700 underline">Administrador</a>
         @else
             <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
