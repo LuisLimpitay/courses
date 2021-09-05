@@ -1,60 +1,128 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+<!--
 
-        <x-jet-validation-errors class="mb-4" />
+    Vista de registro
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+-->
+<!DOCTYPE html>
+<html lang="es">
 
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
+<head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Primary Meta Tags -->
+<title>Registrarse</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title" content="mo distribuidora - login">
+<meta name="author" content="mo">
+<meta name="description" content="----">
+<link rel="canonical" href="">
 
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
+<!-- Fontawesome -->
+<link type="text/css" href="{{url('vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
+<!-- Sweet Alert -->
+<link type="text/css" href="{{url('vendor/sweetalert2/dist/sweetalert2.min.css')}}" rel="stylesheet">
 
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
+<!-- Notyf -->
+<link type="text/css" href="{{url('vendor/notyf/notyf.min.css')}}" rel="stylesheet">
 
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
+<!-- main -->
+<link type="text/css" href="{{url('css/volt.css')}}" rel="stylesheet">
 
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
+
+
+</head>
+
+<body>
+    <main>
+
+        <!-- Section -->
+        <section class="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
+            <div class="container">
+                <div class="row justify-content-center form-bg-image" data-background-lg="../../assets/img/illustrations/signin.svg">
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <div class="mb-4 mb-lg-0 bg-white shadow border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+                            <div class="text-center text-md-center mb-4 mt-md-0">
+                                <img src="{{url('images/logoPlatzi.png')}}" alt="logo">
+                            </div>
+                            <div class="text-center text-md-center mb-4 mt-md-0">
+                                <h1 class="mb-0 h3">Registrarse</h1>
+                            </div>
+                            <form action="{{route('register')}}" method="POST">
+                                @csrf
+                                <!-- Form -->
+
+                                <div class="form-group mb-4">
+                                    <label for="email">Nombre</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon3"><span class="fas fa-user"></span></span>
+                                        <input type="text" class="form-control" placeholder="Alex" name="name" id="email" autofocus required>
+                                    </div>  
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="email">Correo</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon3"><span class="fas fa-envelope"></span></span>
+                                        <input type="email" class="form-control" placeholder="ejemplo@gmail.com" name="email" id="email" autofocus required>
+                                    </div>  
+                                </div>
+                                <!-- End of Form -->
+                                <div class="form-group">
+                                    <!-- Form -->
+                                    <div class="form-group mb-4">
+                                        <label for="password">Contraseña</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon4"><span class="fas fa-unlock-alt"></span></span>
+                                            <input type="password" placeholder="contraseña" name="password" class="form-control" id="password" required>
+                                        </div>  
+                                    </div>
+                                    <!-- End of Form -->
+                                    <!-- Form -->
+                                    <div class="form-group mb-4">
+                                        <label for="confirm_password">Repetir contraseña</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon5"><span class="fas fa-unlock-alt"></span></span>
+                                            <input type="password" placeholder="Confirmar contraseña" name="password_confirmation" class="form-control" id="confirm_password" required>
+                                        </div>  
+                                    </div>
+                                    <!-- End of Form -->
+                                    <div class="form-check mb-4">
+                                        <input class="form-check-input" type="checkbox" value="" id="terms" name="terms" required>
+                                        <label class="form-check-label" for="terms">
+                                            Yo acepto los  <a href="#">términos de uso</a>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                                </div>
+                            </form>
+                            
+                        
+                            <div class="d-flex justify-content-center align-items-center mt-4">
+                                <span class="fw-normal">
+                                    ¿Ya tienes una cuenta?
+                                    <a href="{{route('login')}}" class="fw-bold">Inicia sesión</a>
+                                </span>
                             </div>
                         </div>
-                    </x-jet-label>
+                    </div>
                 </div>
-            @endif
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
             </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+        </section>
+    </main>
+
+        <!-- Core -->
+<script src="url('vendor/@popperjs/core/dist/umd/popper.min.js')"></script>
+<script src="{{url('vendor/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+
+<!-- Vendor JS -->
+<script src="{{url('vendor/onscreen/dist/on-screen.umd.min.js')}}"></script>
+
+<!-- Volt JS -->
+<script src="{{url('js/volt.js')}}"></script>
+
+    
+</body>
+
+</html>

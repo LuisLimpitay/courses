@@ -1,48 +1,132 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+<!--
 
-        <x-jet-validation-errors class="mb-4" />
+    Vista del login
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
+-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Primary Meta Tags -->
+<title>Platzi Courses</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title" content="mo distribuidora - login">
+<meta name="author" content="mo">
+<meta name="description" content="----">
+<link rel="canonical" href="">
+
+<!-- Fontawesome -->
+<link type="text/css" href="{{url('vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
+
+<!-- Sweet Alert -->
+<link type="text/css" href="{{url('vendor/sweetalert2/dist/sweetalert2.min.css')}}" rel="stylesheet">
+
+<!-- Notyf -->
+<link type="text/css" href="{{url('vendor/notyf/notyf.min.css')}}" rel="stylesheet">
+
+<!-- main -->
+<link type="text/css" href="{{url('css/volt.css')}}" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+    <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
+    
+
+    <main>
+
+        <!-- Section -->
+        <section class="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <div class="bg-white shadow border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+                            <div class="text-center text-md-center mb-4 mt-md-0">
+                                <img src="{{url('images/logoPlatzi.png')}}" alt="logo">
+                            </div>
+                            <div class="text-center text-md-center mb-4 mt-md-0">
+                                <h1 class="mb-0 h3">Ingresar a la plataforma</h1>
+                            </div>
+                            <form action="{{route('login')}}" class="mt-4" method="POST">
+                                @csrf
+                                <!-- Form -->
+                                <div class="form-group mb-4">
+                                    <label for="email">Correo</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><span class="fas fa-envelope"></span></span>
+                                        <input type="email"  name="email" placeholder="ejemplo@gmail.com" id="email" autofocus required 
+                                        @error("email")
+                                            class = "form-control is-invalid"
+                                            @else
+                                                class = "form-control"
+                                        @enderror
+                                        >
+                                        @error("email")
+                                            <p class="text-danger">El email escrito no pertenece a un usuario registrado</p>
+                                        @enderror
+                                    </div>  
+                                </div>
+                                <!-- End of Form -->
+                                <div class="form-group">
+                                    <!-- Form -->
+                                    <div class="form-group mb-4">
+                                        <label for="password">Contraseña</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                                            <input type="password" placeholder="Contraseña" name="password" id="password" required 
+                                            @error("password")
+                                                class = "form-control is-invalid"
+                                            @else
+                                                class = "form-control"
+                                        @enderror
+                                        >
+                                        @error("password")
+                                            <p class="text-danger">La contraseña es incorrecta</p>
+                                        @enderror
+                                        </div>  
+                                    </div>
+                                    <!-- End of Form -->
+                                    <div class="d-flex justify-content-between align-items-top mb-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="remember" name="remember">
+                                            <label class="form-check-label mb-0" for="remember">
+                                              Recordarme
+                                            </label>
+                                        </div>
+                                        <div><a href="./forgot-password.html" class="small text-right">¿Olvidaste la contraseña?</a></div>
+                                    </div>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-secondary">Ingresar</button>
+                                </div>
+                            </form>
+        
+                        </div>
+                    </div>
+                </div>
             </div>
-        @endif
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+        </section>
+    </main>
 
-            <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
+   
 
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
+    <!-- Core -->
+<script src="url('vendor/@popperjs/core/dist/umd/popper.min.js')"></script>
+<script src="{{url('vendor/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
+<!-- Vendor JS -->
+<script src="{{url('vendor/onscreen/dist/on-screen.umd.min.js')}}"></script>
 
-                <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+<!-- Volt JS -->
+<script src="{{url('js/volt.js')}}"></script>
+
+    
+</body>
+
+</html>
