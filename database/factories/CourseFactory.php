@@ -12,7 +12,6 @@ class CourseFactory extends Factory
 {
 
     protected $model = Course::class;
-
  
     public function definition()
     {
