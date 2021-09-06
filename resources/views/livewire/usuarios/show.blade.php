@@ -43,7 +43,7 @@
                     <div class="form-group m-2 mt-3">
                         <label for="nombre">Perfil</label>
                         <div class="d-flex flex-row align-items-baseline">
-                            <input type="text" wire:model="name" placeholder="{{$usuario->perfil}}" id="perfil" class="form-control" disabled>
+                            <input type="text" placeholder="{{$usuario->perfil}}" id="perfil" class="form-control" disabled>
                             <div class="m-1">
                                 <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#update-fecha">
                                     <span class="fas fa-redo text-white"></span>
