@@ -15,6 +15,7 @@ class AddPerfilColumnToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('perfil')->default('estudiante');
+            $table->enum('status', ['activo', 'inactivo'])->default('activo');
         });
     }
 

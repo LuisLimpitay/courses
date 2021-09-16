@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         Category::factory(10)->create();
         Course::factory(10)->create();
-        Post::factory(10)->create();
+        //Post::factory(10)->create();
 
     }
 }
